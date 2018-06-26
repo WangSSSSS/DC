@@ -30,6 +30,20 @@ def clean_data():
     concat_df['hour']=concat_df['register_time'].dt.hour
     concat_df['weekday']=concat_df['register_time'].dt.weekday
     del concat_df['register_time']
+    
+    
+    names = ['wood','stone','ivory','meat','magic','infantry','cavalry','shaman','wound_infantry','wound_cavalry'
+             ,'wound_shaman','general_acceleration','building_acceleration','reaserch_acceleration','training_acceleration'
+             ]
+
+          for c_name  in names:
+            new  _c = c_name
+            add_c = c_name +'_add_value'
+            reduce_c = c_name +'_reduce_value'
+            concat_df[new_c] = concat_df[add_c] - concat_df[reduce_c]
+    
+        
+    
 # 支付过则 pay_class 为1  否则为0
     concat_df['pay_class'] = concat_df['prediction_pay_price'].apply(lambda x : 1 if x!=0 else 0)
 # 数据清洗
