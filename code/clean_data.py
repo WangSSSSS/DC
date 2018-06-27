@@ -41,6 +41,15 @@ def clean_data():
             add_c = c_name +'_add_value'
             reduce_c = c_name +'_reduce_value'
             concat_df[new_c] = concat_df[add_c] - concat_df[reduce_c]
+            
+    concat_df['treatment_acceleration']=concat_df['treatment_acceleraion_add_value'] - \
+                                        concat_df['treatment_acceleration_reduce_value']        
+           
+    reduce_columns = [x for x in concat_df.columns if x.endswith('reduce_value')]
+    concat_df['reduce_column'] = 0
+    for reduce_column in reduce_columns:
+        concat_df['reduce_column']  = concat_df['reduce_column'] + concat_df[reduce_column]
+    
     
         
     
