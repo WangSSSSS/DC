@@ -49,6 +49,11 @@ def clean_data():
     concat_df['reduce_column'] = 0
     for reduce_column in reduce_columns:
         concat_df['reduce_column']  = concat_df['reduce_column'] + concat_df[reduce_column]
+        
+    add_columns = [x for x in concat_df.columns if x.endswith('add_value')]
+    concat_df['add_column'] = 0
+    for add_column in add_columns:
+        concat_df['add_column']  = concat_df['add_column'] + concat_df[add_column]
     
     
         
